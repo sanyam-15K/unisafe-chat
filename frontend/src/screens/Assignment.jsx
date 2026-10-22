@@ -1,12 +1,9 @@
-import { useState } from "react";
-import { ArrowLeft, MoreHorizontal, Clock, FileText, Database, Download, MessageSquare } from "lucide-react";
+import { ArrowLeft, MoreHorizontal, Clock, FileText, Database, Download } from "lucide-react";
 import { assignment as a } from "../data.js";
-import { Avatar } from "./Feed.jsx";
+import Avatar from "../components/Avatar.jsx";
+import Comments from "../components/Comments.jsx";
 
-export default function Assignment({ comments, onAdd, onBack }) {
-  const [text, setText] = useState("");
-  const send = () => { if (text.trim()) { onAdd(text.trim()); setText(""); } };
-
+export default function Assignment({ user, db, actions, onBack }) {
   return (
     <>
       <header className="top plain-top">
@@ -30,12 +27,10 @@ export default function Assignment({ comments, onAdd, onBack }) {
           <div className="pts"><b>{a.points}</b><small>POINTS</small></div>
         </div>
       </header>
-
       <section className="panel">
         <h3>{a.intro}</h3>
         <p className="muted">{a.summary}</p>
         <ol className="tasks">{a.tasks.map((t, i) => <li key={i}><span>{String(i + 1).padStart(2, "0")}</span>{t}</li>)}</ol>
-
         <div className="row between"><h3>Everything you need</h3><small>{a.files.length} files</small></div>
         {a.files.map((f, i) => (
           <div className="file" key={f.name}>
@@ -44,26 +39,7 @@ export default function Assignment({ comments, onAdd, onBack }) {
             <Download size={18} />
           </div>
         ))}
-
-        <div className="row between"><h3>Class discussion</h3><a className="link" href="#" onClick={(e) => e.preventDefault()}>View all {comments.length} →</a></div>
-        {comments.map((c) => (
-          <div className="comment" key={c.id}>
-            <Avatar name={c.name} size={30} />
-            <div className="grow">
-              {/* Name + ERP always visible: no anonymous comments */}
-              <div className="who"><b>{c.name}</b><span className="badge stu">{c.role}</span><small>{c.erp} · {c.time}</small></div>
-              <p className="body">{c.text}</p>
-              {c.reply && <small className="link">{c.reply}</small>}
-            </div>
-          </div>
-        ))}
-
-        <div className="composer">
-          <MessageSquare size={18} />
-          <input value={text} onChange={(e) => setText(e.target.value)} onKeyDown={(e) => e.key === "Enter" && send()}
-            placeholder="Add a comment…" aria-label="Add a comment" />
-          <button className="btn sm" onClick={send}>Comment</button>
-        </div>
+        <Comments postId={2} user={user} db={db} actions={actions} />
       </section>
     </>
   );

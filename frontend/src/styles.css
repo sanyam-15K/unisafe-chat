@@ -114,3 +114,30 @@ p.muted{display:block;line-height:1.5}
 .tab.on{color:var(--brand)}.tab.on .tab-ico{background:var(--brand-soft)}
 .tab-ico .pip{top:2px;right:12px}
 @media(prefers-reduced-motion:no-preference){button{transition:background .15s,color .15s}}
+
+/* login */
+.login{min-height:100%;background:#fff;padding:36px 22px 28px;display:flex;flex-direction:column;align-items:center;gap:10px}
+.login h1{font-size:26px;font-weight:800}.c{text-align:center;font-size:14px}
+.big-logo{width:60px;height:60px;border-radius:18px}
+.form{width:100%;display:flex;flex-direction:column;gap:12px;margin-top:8px}
+.form label{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600}
+.form input{border:1px solid var(--line);border-radius:12px;padding:12px;font-size:15px;width:100%;background:#fff}
+.pw{position:relative;display:block}.pw button{position:absolute;right:8px;top:50%;transform:translateY(-50%);color:var(--muted);padding:6px}
+.err{color:#b42318;font-size:13px;background:#fef3f2;border-radius:10px;padding:10px}
+.demo{width:100%;display:flex;flex-direction:column;gap:6px;margin-top:10px;padding-top:14px;border-top:1px solid var(--line)}
+.demo button{display:flex;justify-content:space-between;align-items:center;gap:8px;background:var(--bg);border-radius:10px;padding:9px 12px;text-align:left;font-size:13px}
+
+/* posting, reporting, moderation */
+.ta{width:100%;border:1px solid var(--line);border-radius:12px;padding:10px;font-size:14px;resize:vertical;font-family:inherit}
+.hint{display:flex;gap:6px;align-items:center;font-size:12px;color:var(--muted);background:var(--brand-soft);border-radius:12px;padding:10px 12px}
+.warn{display:flex;gap:8px;align-items:center;font-size:13px;font-weight:600;color:#93370d;background:#fff4e5;border:1px solid #fcd9a8;border-radius:12px;padding:10px 12px}
+.rep{display:inline-flex;align-items:center;gap:4px;font-size:12px;color:var(--muted);margin-top:4px;padding:2px 0}
+.rep:hover{color:#b42318}
+.acts{display:flex;gap:6px;flex-wrap:wrap}
+.acts button{border:1px solid var(--line);border-radius:10px;padding:7px 12px;font-size:13px;font-weight:600;background:#fff}
+.acts .danger{background:#b42318;border-color:#b42318;color:#fff}
+
+/* comment previews in the feed */
+.preview{border-top:1px solid var(--line);padding-top:10px;display:flex;flex-direction:column;gap:10px}
+.pv{display:flex;gap:8px}.pv .body{font-size:13px}
+.tl{text-align:left}

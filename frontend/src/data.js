@@ -1,7 +1,6 @@
 // Mock data. Later, replace each export with a call to the backend API.
 export const APP = { name: "UniSafe Chat", institute: "Dev Bhoomi University, Uttarakhand", campus: "Main campus" };
 
-export const me = { name: "Arjun Shah", erp: "ERP-2024-0192", role: "student", branch: "CSE · Year 2" };
 
 export const assignment = {
   id: "a04", number: "04", title: "SQL joins & subqueries", course: "CS 204 · Database Management",
@@ -24,15 +23,12 @@ export const assignment = {
 };
 
 export const posts = [
-  { id: 1, kind: "official", pinned: true, author: "Office of the Registrar", badge: "OFFICIAL", audience: "All students", time: "1 hour ago",
-    title: "Next semester starts with your choices.",
-    body: "Course registration opens Oct 22 at 9 AM. Review your electives on the student portal.",
-    link: "Read official update", seen: "Seen by 2.4k" },
   { id: 2, kind: "course", author: "Dr. Maya Rao", badge: "FACULTY", audience: "CS 204 · CSE, Year 2", time: "24 min ago",
-    body: "Let's put those SQL skills to work. Your next assignment is live!", assignment: true, comments: 8 },
-  { id: 3, kind: "official", author: "Student Affairs", badge: "OFFICIAL", audience: "All campus", time: "2 hours ago",
-    title: "Big ideas. Real campus energy.", event: "Innovate '26 · Central Quad · 10 AM–5 PM", month: "OCT", day: "23",
-    note: "Open to all students", link: "Explore event", comments: 12 },
+    body: "Let's put those SQL skills to work. Your next assignment is live!", assignment: true },
+  { id: 3, kind: "course", author: "Prof. A. Sen", badge: "FACULTY", audience: "CS 201 · CSE, Year 2", time: "1 hour ago",
+    body: "Slides from today's class are up. Please review the heap examples before tomorrow's lab." },
+  { id: 4, kind: "course", author: "Dr. Neha Joshi", badge: "FACULTY", audience: "CSE · Year 2 · All sections", time: "3 hours ago",
+    title: "Mid-term revision class", body: "Saturday, 10 AM, Room 204. Bring your doubts from Units 1 to 3." },
 ];
 
 export const week = [
@@ -56,3 +52,34 @@ export const groups = [
   { id: 3, type: "course", name: "CS 201 · Data Structures", sub: "Course group · Prof. A. Sen · 64 members",
     last: "Prof. A. Sen: Slides from today are up. Review the heap examples before lab.", time: "Yesterday", unread: 1, comments: 9, badge: "FACULTY ADMIN", enrolled: true },
 ];
+
+// Demo accounts: login is ERP number + date of birth as DDMMYY. Replace with real data later.
+export const users = [
+  { erp: "26BTBIO001", dob: "150805", name: "Siddharth ", role: "student", branch: "BIOTECHNOLOGY· Year 1" },
+  { erp: "26BTBIO002", dob: "220306", name: "Aryaman ", role: "student", branch: "BIOTECHNOLOGY· Year 1" },
+  { erp: "26BTBIO003", dob: "010206", name: "Vansh", role: "student", branch: "BIOTECHNOLOGY· Year 1" },
+  { erp: "26BTBIO004", dob: "301105", name: "Sanyam", role: "student", branch: "BIOTECHNOLOGY· Year 1" },
+  { erp: "FAC001", dob: "100680", name: "Dr. Maya Rao", role: "faculty", branch: "BIOTECHNOLOGY" },
+  { erp: "FAC002", dob: "050575", name: "Prof. A. Sen", role: "faculty", branch: "BIOTECHNOLOGY" },
+  { erp: "FAC003", dob: "140982", name: "Dr. Neha Joshi", role: "faculty", branch: "BIOTECHNOLOGY" },
+  { erp: "ADM001", dob: "010180", name: "Campus Admin", role: "admin", branch: "Administration" },
+];
+
+const S = (id, postId, erp, name, time, text) => ({ id, postId, erp, name, role: "STUDENT", time, text });
+const F = (id, postId, erp, name, time, text) => ({ id, postId, erp, name, role: "FACULTY", time, text });
+
+export const initialDb = {
+  posts,
+  comments: [
+    S(1, 2, "26BTBIO001", "Siddharth ", "20m", "Should we include query outputs in the PDF?"),
+    F(2, 2, "FAC001", "Dr. Maya Rao", "15m", "Yes, add a short explanation under each output."),
+    S(3, 2, "26BTBIO002", "Aryaman ", "10m", "Is the dataset file the same one we used in class?"),
+    S(4, 2, "26BTBIO003", "Vansh", "6m", "Can we use a subquery inside a JOIN for question 2?"),
+    S(5, 3, "26BTBIO004", "Sanyam", "50m", "Will heap sort come in the lab test, sir?"),
+    S(6, 3, "26BTBIO002", "Aryaman ", "40m", "Thank you sir, the slides are very clear."),
+    S(7, 3, "26BTBIO001", "Siddharth ", "25m", "Could you also upload the lab manual?"),
+    S(8, 4, "26BTBIO003", "Vansh", "2h", "Will the revision class be recorded?"),
+    S(9, 4, "26BTBIO004", "Sanyam", "1h", "Can we ask doubts from Unit 3 first?"),
+  ],
+  reports: [], status: {}, warnings: {},
+};
